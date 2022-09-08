@@ -1,0 +1,401 @@
+
+.buttonstyling {
+ border: 10px black;
+ 
+ float:right;
+ display:block;
+ background-color: #eb994c;
+ color: #333; /* Dark grey */ 
+ padding: 16px 42px;
+ border-radius:0px;
+ box-shadow: 0px 0px 12px -2px rgba(0,0,0,5);
+ line-height:0.75;
+ text-decoration:none;
+ color:white;
+ font-size:16px;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+              }
+
+  
+    .buttonstyle {
+     border: 2px #eb994c;
+     display: block;
+     margin: 0 auto;
+     display:block;
+     background-color: #eb994c;
+     color: white; /* Dark grey */ 
+     padding: 12px 12px;
+     border-radius: 0px;
+     text-transform: uppercase;
+                  }
+                  .buttonstyle:hover {
+            background-color: rgb(182, 74, 7);
+          }
+  
+  
+    .parastyle{
+      text-align:center;
+      color:black;
+    }
+  
+    #exceltable {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #exceltable td, #exceltable th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #exceltable tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #exceltable tr:hover {background-color: #ddd;}
+    
+    #exceltable th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+ /* To display the block as level element */
+   
+          
+       
+            
+      
+    #exceltable1 {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      
+    }
+    #exceltable1 tbody
+    {
+        
+       
+        width: 100%;
+     
+    
+      
+    }
+    #exceltable1 thead
+    {
+     
+      position:sticky;
+      
+    }
+ 
+    #exceltable1 td, #exceltable1 th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #exceltable1 tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #exceltable1 tr:hover {background-color: #ddd;}
+    
+    #exceltable1 th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    
+   
+              
+    
+    }
+    #subscriptions {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #subscriptions td, #subscriptions th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #subscriptions tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #subscriptions tr:hover {background-color: #ddd;}
+    
+    #subscriptions th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+    
+    #users {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #users td, #users th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #users tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #users tr:hover {background-color: #ddd;}
+    
+    #users th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+    }
+    
+    
+    #usage {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #usage td, #usage th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #usage tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #usage tr:hover {background-color: #ddd;}
+    
+    #usage th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #metadata {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #metadata td, #metadata th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #metadata tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #metadata tr:hover {background-color: #ddd;}
+    
+    #user_metadata th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #user_metadata {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #user_metadata td, #user_metadata th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #user_metadata tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #metadata tr:hover {background-color: #ddd;}
+    
+    #metadata th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #license_assigned {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #license_assigned td, #license_assigned th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #license_assigned tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #license_assigned tr:hover {background-color: #ddd;}
+    
+    #license_assigned th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #license_purchased {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #license_purchased td, #license_purchased th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #license_purchased tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #license_purchased tr:hover {background-color: #ddd;}
+    
+    #license_purchased th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #costcenter {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #costcenter td, #costcenter th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #costcenter tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #costcenter tr:hover {background-color: #ddd;}
+    
+    #costcenter th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #eb994c;
+      color: white;
+      position:sticky;
+      top: 0px;
+    }
+
+    #table.bodyHidden tr:nth-child(odd),
+#table.bodyHidden tr:nth-child(even) {
+  display: none;
+}
+
+#table.bodyHidden tr:first-child {
+  display: block;
+}
+
+#user_metadata1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #eb994c;
+  color: white;
+  position:sticky;
+  top: 0px;
+}
+
+#user_metadata1 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#user_metadata1 td, #user_metadata1 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#user_metadata1 tr:nth-child(even){background-color: #f2f2f2;}
+
+
+          .outer-wrapper {
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+    max-width: fit-content;
+    max-height: fit-content;
+
+    
+}
+
+#product_version {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#product_version td, #product_version th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#product_version tr:nth-child(even){background-color: #f2f2f2;}
+
+
+          .outer-wrapper {
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+    max-width: fit-content;
+    max-height: fit-content;
+
+    
+}
+.table-wrapper {
+
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: fit-content;
+    max-height: 66.4vh;
+    
+    margin-top: 22px;
+    
+    margin: 15px;
+    padding-bottom: 20px;
+    
+}
+#popup {
+  display: none;
+}
