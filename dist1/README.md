@@ -56,7 +56,9 @@ Uses 3-legged oAuth2 with implicit grant to authenticate with Forge.
 
 ### Deployment
 
-Deploy it using GitHub pages. Follow this [tutorial](https://www.youtube.com/watch?v=SKXkC4SqtRk)
+The above sample is deployed on https://autodesk-forge.github.io/forge-premium-report/
+
+To deploy your changed code use GitHub pages. Follow this [tutorial](https://www.youtube.com/watch?v=SKXkC4SqtRk)
 
 Note- As soon as you deploy it the redirect URL becomes the deployment domain.
 
