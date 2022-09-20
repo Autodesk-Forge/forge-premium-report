@@ -1,0 +1,462 @@
+<!-- /////////////////////////////////////////////////////////////////////
+// Copyright (c) Autodesk, Inc. All rights reserved
+// Written by Forge Partner Development
+//
+// Permission to use, copy, modify, and distribute this software in
+// object code form for any purpose and without fee is hereby granted,
+// provided that the above copyright notice appears in all copies and
+// that both that copyright notice and the limited warranty and
+// restricted rights notice below appear in all supporting
+// documentation.
+//
+// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
+// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
+// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
+// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
+// UNINTERRUPTED OR ERROR FREE.
+///////////////////////////////////////////////////////////////////// -->
+<html>
+    <head>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <script src="js/methods.js"></script>
+        
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script>  
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+         <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/themes/default/style.min.css" />
+         <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      
+        <!--<script src="js/jsonToExcel.js"></script>--> 
+         <!--    <script src="js/pie.js"></script>-->
+         <script src="js/jsonToTable.js"></script>
+         
+         <script src="js/line.js"></script>
+     
+         <script src="js/polarArea.js"></script>
+        
+         <link rel="stylesheet" href="css/style.css" />
+         <script type="text/javascript" src="metadata.json"></script>
+         
+         <title>PremiumAPITest</title>
+         
+    </head>
+         <body onload="premiumApi.onLoad()">
+     
+        
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav left">
+        <li>
+          <a href="http://forge.autodesk.com" target="_blank">
+            <img alt="Autodesk Forge" src="//developer.static.autodesk.com/images/logo_forge-2-line.png" height="40">         
+        </a>
+        </li>
+      </ul>
+   <h3>Premium Reporting Sample 
+   
+     
+
+
+      <button id="LogIn" onclick="premiumApi.client_id_value(),premiumApi.logIn()" class="buttonstyling" style='margin-right:16px'>LOG IN</button>
+   
+
+<button id="LogOut" onclick="premiumApi.logOut()" class="buttonstyling" style='margin-right:16px'>LOG OUT</button>  
+</h3>
+    </div>
+  </nav>
+  <div class="container-fluid fill">
+    <div class="row fill">
+      <div class="col-sm-4 fill">
+        <div class="panel panel-default fill">
+          <div class="panel-heading" data-toggle="tooltip">
+        
+          </div>
+        
+        </div>
+      </div>
+      <div class="col-sm-8 fill">
+     
+      </div>
+    </div>
+  </div>
+  
+
+ 
+
+  <div class="container">
+  <br><br><br><br>               
+    <ul class="breadcrumb">
+      <li><button id="GetUsageInformation" onclick="premiumApi.getusage()" class="buttonstyle btn btn-info"  data-toggle="collapse" data-target="#demo, #demo1 ,#demo2 ,#demo3 ,#demo4,#demo5">Custom Usage Query API Data</button>  
+      </li>
+      <li>        <button id="viewAllExport" onclick="premiumApi.viewallexport()" class="buttonstyle" >Download Export Usage Query API Data </button>
+      </li>
+      <li > <input type="button" name="answer1" value="Custom Reports/ Meta Data Mapping" onclick="showDiv()" class="buttonstyle" class="buttonstyle btn btn-info"  data-toggle="collapse" data-target="#usecases" /> 
+      </li>
+        <!-- <li > <input type="button" name="answer2" value="Charts" onclick="showDiv()" class="buttonstyle" class="buttonstyle btn btn-info"  data-toggle="collapse" data-target="#charts" /> 
+       </li>
+      <li > <input type="button" name="answer3" value="PowerBI" onclick="showDiv()" class="buttonstyle" class="buttonstyle" class="buttonstyle btn btn-info"  data-toggle="collapse" data-target="#powerbi"/>
+      </li>    -->
+      
+      
+    </ul>
+  </div>
+  <p id = "para"></p>
+  <p id = "para1"></p>
+       <div class="row"dump
+<div class="column">
+    <div class="center">
+    
+      
+      <div id="charts" class="collapse" > 
+        <p class="parastyle"> Store the .csv format of all.xlsx in client code folder to view the charts</p>
+      <canvas id="myChart" width="500" height="250" style="float:left" ></canvas>
+      <canvas id="myChart2" width="500" height="250" style="float:left" ></canvas>
+       
+      </div>
+
+      <!-- <div id="powerbi" class="collapse">
+  
+        
+        <p align="center"> <iframe 
+             title="Usage Data Report Template" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=cfa9a338-ece2-4d52-8d15-257fc9141a33&autoAuth=true&ctid=d31e02c6-54b5-4d12-862e-f9a59580ae30" frameborder="0" allowFullScreen="true">        </iframe>
+          </p> 
+       </div> -->
+          
+        </div> 
+        <div id="usecases" class="collapse">
+          <p class="parastyle">&nbsp;&nbsp;&nbsp;&nbsp;If you want to view the downloaded xlsx. Upload your file over here & then click on Export To Table</p>     
+          <input type="file" id="excelfile" class="buttonstyle" />  
+          <br><br>
+          <input type="button" id="viewfile" value="Export To Table" onclick="ExportToTable()" class="buttonstyle" data-toggle="collapse" data-target="#demo21"  />  
+             <br />  
+             <br />  
+            </div>
+            <div class="column" hidden="hidden">
+              <a id="d"></a>
+            
+            <textarea id="Info" rows="100" cols="50"></textarea> 
+            <a id="downloadAnchorElem" style="display:none"></a>   
+            <canvas id="canvas"></canvas> 
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+       
+            <div id="demo21" class="collapse">
+              
+              <!-- <h2 class="parastyle" id="headings4"> </h2>
+              <div class = "container">
+                <div class="outer-wrapper">
+                  <div class="table-wrapper">
+                
+                <table id="user_metadata1">  
+                </table> 
+                </div></div>
+              </div>
+              
+              <br><br>
+               -->
+              
+              <h2 class="parastyle" id="headings1"> </h2>
+              <div class = "container">
+                <div class="outer-wrapper">
+                  <div class="table-wrapper">
+              
+                <table id="license_purchased">  
+                </table> 
+              </div></div></div>
+              <br><br>
+              <br><br>
+              
+           
+              <h2 class="parastyle" id="headings2"></h2> 
+              <div class = "container">
+                <div class="outer-wrapper">
+                  <div class="table-wrapper">
+              
+                <table id="license_assigned">  
+                </table> 
+              </div></div></div>
+              <br><br>
+              
+      
+              <h2 class="parastyle" id="headings">  </h2>
+              <div class = "container">
+                <div class="outer-wrapper">
+                  <div class="table-wrapper">
+                <table id="costcenter">  
+                </table> 
+              </div></div></div>
+              <br><br>
+              
+              
+               
+                  <h2 class="parastyle" id="headings5">  </h2>
+                  <div class = "container">
+                    <div class="outer-wrapper">
+                      <div class="table-wrapper">
+                    <table id="product_version">  
+                    </table> 
+                  </div></div></div>
+                  <br><br>
+              
+                </div>
+       
+        <div  id="demo" class = "collapse"  >
+        <script>
+             function ExportToExcel(type, fn, dl) {
+                    
+                    var elt = active
+                    
+                    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                    return dl ?
+                   
+                      XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                      XLSX.writeFile(wb, fn || ('Active.' + (type || 'xlsx')));
+                      
+                 }
+        </script>
+          <div class="outer-wrapper">
+            <button onclick="ExportToExcel('xlsx')" style='margin-right:16px'>Export table to excel</button>
+
+            <div class="table-wrapper">
+            <table  id="exceltable1"  >
+                <thead id="activeh"  >
+                
+                </thead>
+                <tbody id="active">
+                </tbody>
+  
+            </table>
+          </div>
+        </div>
+        </div>
+        
+        <br><br>
+        <div  id="demo1" class = "collapse"  >
+         
+          <script>
+               function ExportToExcel1(type, fn, dl) {
+                      
+                      var elt = inactive
+                      
+                      var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                      return dl ?
+                     
+                        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                        XLSX.writeFile(wb, fn || ('Inactive.' + (type || 'xlsx')));
+                        
+                   }
+          </script>
+          <div class="outer-wrapper">
+            <button onclick="ExportToExcel1('xlsx')">Export table to excel</button>
+            <div class="table-wrapper">
+           
+            <table  id="exceltable1"  >
+                <thead id="inactiveh" >
+                
+                </thead>
+                <tbody id="inactive">
+                </tbody>
+  
+            </table>
+          </div></div>
+        </div>
+     
+      <br><br>
+      <br><br>
+      <!-- <div  id="demo3" class = "collapse">
+        <button onclick="ExportToExcel2('xlsx')">Export table to excel</button>
+        <script>
+          function ExportToExcel2(type, fn, dl) {
+                 
+                 var elt = get205
+                 
+                 var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                 return dl ?
+                
+                   XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                   XLSX.writeFile(wb, fn || ('flexmorethan7days.' + (type || 'xlsx')));
+                   
+              }
+     </script>
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
+        <table  id="exceltable1"  >
+            <thead id="get206" >
+            
+            </thead>
+            <tbody id="get205">
+            </tbody>
+        </table>
+      </div></div>
+    </div>
+        <br><br> -->
+        <br><br>
+        <div  id="demo4" class = "collapse" >
+          <script>
+            function ExportToExcel4(type, fn, dl) {
+                   
+                   var elt = get209
+                   
+                   var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                   return dl ?
+                  
+                     XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                     XLSX.writeFile(wb, fn || ('infrequent_1product.' + (type || 'xlsx')));
+                     
+                }
+       </script>
+          <div class="outer-wrapper">
+            <button onclick="ExportToExcel4('xlsx')">Export table to excel</button>
+
+            <div class="table-wrapper">
+          <table  id="exceltable1"  >
+              <thead id="get208" >
+              
+              </thead>
+              <tbody id="get209">
+  
+              </tbody>
+  
+          </table>
+          </div></div>
+      </div>
+        <br><br>
+        <div  id="demo2" class = "collapse">
+          <script>
+            function ExportToExcel3(type, fn, dl) {
+                   
+                   var elt = getData403
+                   
+                   var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+                   return dl ?
+                  
+                     XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                     XLSX.writeFile(wb, fn || ('standalone.' + (type || 'xlsx')));
+                     
+                }
+       </script>
+          <div class="outer-wrapper">
+            <button onclick="ExportToExcel3('xlsx')">Export table to excel</button>
+
+            <div class="table-wrapper">
+          <table  id="exceltable1"  >
+              <thead id="getData402" >
+              
+              </thead>
+              <tbody id="getData403">
+              </tbody>
+          </table>
+        </div></div>
+      </div>
+      <br><br>
+        
+          <br><br>
+       
+        
+            <br><br>
+        
+        <br><br>
+        
+        
+        
+      
+    <!-- <button id="GetSpecificUsageQuery" onclick="premiumApi.getspecificusagequery()" class="buttonstyle">Click here to get Specific Usage Query</button>
+       <br><br>
+       <p id="getData"></p>
+       <br><br>--> 
+      <!--  <button id="ExportQueryInformation" onclick="premiumApi.exportqueryinformation()" class="buttonstyle">Click here to get Export Query Information</button>
+     
+        <br><br>
+        
+              
+        
+        <div class = "container">
+            <table class="table table-stripped">
+                <thead id="data9">
+                
+                </thead>
+         
+              <tbody id="data10">
+              </tbody>
+            </table>
+        </div>
+<br><br>
+        <button id="getSpecificReport" onclick="premiumApi.getspecificreport()" class="buttonstyle">Click here to get Specific Report</button>
+        <br><br>
+        <div class = "container">
+            <table class="table table-stripped">
+                <thead id="data5">
+                
+                </thead>
+         
+              <tbody id="data6">
+              </tbody>
+            </table>
+        </div>
+      
+        <br><br>-->
+        
+       <!--- <div class = "container">
+            <table class="table table-stripped">
+                <thead id="data7">
+                
+                </thead>
+         
+              <tbody id="data8">
+              </tbody>
+            </table>
+        </div>-->
+       
+       
+       
+       
+       
+        <br><br> 
+
+ <!--<div class = "container">
+    <table id="subscriptions">  
+    </table> 
+</div>
+<br><br>
+<div class = "container">
+  <table id="users">  
+  </table> 
+</div>
+<br><br>
+<div class = "container">
+  <table id="usage">  
+  </table> 
+</div>
+ 
+<br><br>
+<div class = "container">
+  <table id="metadata">  
+  </table> 
+</div>
+-->
+
+<br><br>
+
+
+
+
+       
+      
+               
+      
+    
+    </body>
+   
+</html>

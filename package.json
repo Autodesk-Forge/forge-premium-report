@@ -1,0 +1,23 @@
+{
+  "name": "forge-premium-report-final",
+  "version": "1.0.0",
+  "description": "This web application helps viewing and exporting usage data  in the form of tables,charts from Premium Reporting APIs.",
+  "main": "convert.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepalics0044/forge-premium-remote-private"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deepalics0044/forge-premium-remote-private/issues"
+  },
+  "homepage": "https://github.com/deepalics0044/forge-premium-remote-private#readme",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}
