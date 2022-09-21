@@ -15,7 +15,6 @@
 // DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
-
 function ExportToExcel(type, fn, dl) {
     var elt = document.getElementById('temp');
     var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
