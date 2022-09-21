@@ -20,6 +20,8 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 var a;
 let context_id="";
 let specific_id="";
+let specific_id1="";
+let specific_id2="";
 var premiumApi = {
     "access_token": "",
     "LogIn": ["Log In", "Logged In"],
@@ -68,8 +70,54 @@ var premiumApi = {
             console.log(json2);
            specific_id = json2.id;
           console.log("specific id is"+specific_id);
+          let user_specific1 = {
+            'fields': ['fullName','productName','childProductName'],
+            'metrics': [],
+            'where': '',
+            'orderBy': ''
+        };
+          if (premiumApi.access_token === "")
+          return
+      fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' + context_id, {
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${premiumApi.access_token}`,
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(user_specific1)
+      })
+          .then(res => res.text())
+          .then(data => {
+              let json2 = JSON.parse(data)
+              console.log(json2);
+             specific_id1 = json2.id;
+            console.log("specific id is"+specific_id1);
+            let user_specific2 = {
+                'fields': ['fullName','productName'],
+                'metrics': ['totalUniqueDays', 'uniqueProducts'],
+                'where': '',
+                'orderBy': ''
+            };
+            if (premiumApi.access_token === "")
+            return
+        fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' + context_id, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${premiumApi.access_token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user_specific2)
+        })
+            .then(res => res.text())
+            .then(data => {
+                let json2 = JSON.parse(data)
+                console.log(json2);
+               specific_id2 = json2.id;
+              console.log("specific id is"+specific_id2);
         })
     })
+})
+})
     },
     "getusage":   async function () {
         if (premiumApi.access_token === "")
@@ -193,70 +241,10 @@ var premiumApi = {
                     })
                 }
                 document.getElementById("inactive").innerHTML = temp;
-            // let user1 = {
-            //     'fields': ['fullName', 'productName','usageMonth','tokens'],
-            //     'metrics': ['totalUniqueDays'],
-            //     'where': '',
-            //     'orderBy': ''
-            // };
-            // if (premiumApi.access_token === "")
-            //     return
-            //  fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=2000&' + specific_id, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'Authorization': `Bearer ${premiumApi.access_token}`
-            //     },
-            //     body: JSON.stringify(user1)
-            // })
-            //     .then(res => res.text())
-            //     .then(data => {
-            //         let json3 = JSON.parse(data)
-            //         const result3 = (json3.columns || []).length;
-            //         if (result3 > 0) {
-            //             var temp1 = "";
-            //             temp1 += "<tr>";
-            //             temp1 += "<th>" + "Full Name" + "</th></a>";
-            //             temp1 += "<th>" + "Product Name" + "</th>";
-            //             temp1 += "<th>" + "Usage Month" + "</th>";
-            //             temp1 += "<th>" + "Tokens" + "</th>";
-            //             temp1 += "<th>" + "Total Unique Days" + "</th>";
-            //             temp1 += "<th>" + "Identify Flex users that are exceeding the value of Flex (usage more than 7 days per month)" + "</th></tr>";
-            //             console.log(temp1)
-            //             document.getElementById("get206").innerHTML = temp1;
-            //         }
-            //         var x = 0;
-            //         var temp = "";
-            //         const r3 = (json3.rows || []).length;
-            //         if (r3 > 0) {
-            //             var y = 0;
-            //             json3.rows.forEach((u) => {
-            //                 var usage_Month = new Date(json3.rows[x][y + 2]);
-            //                 let potential_flex;
-            //                 //check unique day is greater than or equal to 7
-            //                 if (json3.rows[x][y + 4] > 7) {
-            //                     potential_flex = "No";
-            //                 }
-            //                 else {
-            //                     potential_flex = "Yes";
-            //                 }
-            //                 if(potential_flex=='No')
-            //                 {
-            //                     temp += "<tr>";
-            //                     temp += "<td>" + json3.rows[x][y] + "</td>";
-            //                     temp += "<td>" + json3.rows[x][y + 1] + "</td></a>";
-            //                     temp += "<td>" + usage_Month.toDateString() + "</td></a>";
-            //                     temp += "<td>" + json3.rows[x][y + 3] + "</td></a>";
-            //                     temp += "<td>" + json3.rows[x][y + 4] + "</td>";
-            //                     temp += "<td>" + potential_flex + "</td></tr>";
-            //             }
-            //                 x = x + 1;
-            //             })
-            //         }
-            //         document.getElementById("get205").innerHTML = temp;
+            
                 if (premiumApi.access_token === "")
                     return
-                fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id, {
+                fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id1, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${premiumApi.access_token}`
@@ -292,9 +280,11 @@ var premiumApi = {
                             })
                         }
                         document.getElementById("getData403").innerHTML = temp5;
+                    
+                
                     if (premiumApi.access_token === "")
                         return
-                     fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id, {
+                     fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id2, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': `Bearer ${premiumApi.access_token}`
@@ -333,8 +323,8 @@ var premiumApi = {
                                 })
                             }
                             document.getElementById("get209").innerHTML = temp5;
-                            })
                         })
+                    }) 
                     })
     },
     "viewallexport":  async function () {
