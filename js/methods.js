@@ -27,7 +27,7 @@ var premiumApi = {
 	access_token: '',
 	LogIn: ['Log In', 'Logged In'],
 	onLoad: async function () {
-		await delay(5000);
+		delay(5000);
 		console.log('Waited 5s');
 		console.log('onLoad');
 		var url = new URL(window.location.href.replace('#', '?'));
@@ -56,6 +56,7 @@ var premiumApi = {
 					orderBy: '',
 					context: context_id,
 				};
+				delay(5000);
 				if (premiumApi.access_token === '') return;
 				fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' + context_id, {
 					method: 'POST',
@@ -77,6 +78,7 @@ var premiumApi = {
 							where: '',
 							orderBy: '',
 						};
+						delay(5000);
 						if (premiumApi.access_token === '') return;
 						fetch(
 							'https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' +
@@ -102,7 +104,7 @@ var premiumApi = {
 									where: '',
 									orderBy: '',
 								};
-
+								delay(5000);
 								if (premiumApi.access_token === '') return;
 								fetch(
 									'https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' +
@@ -246,7 +248,7 @@ var premiumApi = {
 					});
 				}
 				document.getElementById('inactive').innerHTML = temp;
-
+				delay(5000);
 				if (premiumApi.access_token === '') return;
 				fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id1, {
 					headers: {
@@ -283,7 +285,7 @@ var premiumApi = {
 							});
 						}
 						document.getElementById('getData403').innerHTML = temp5;
-
+						delay(5000);
 						if (premiumApi.access_token === '') return;
 						fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id2, {
 							headers: {

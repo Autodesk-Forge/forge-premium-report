@@ -26,7 +26,9 @@ let specific_id2 = '';
 var premiumApi = {
 	access_token: '',
 	LogIn: ['Log In', 'Logged In'],
-	onLoad: function () {
+	onLoad: async function () {
+		delay(5000);
+		console.log('Waited 5s');
 		console.log('onLoad');
 		var url = new URL(window.location.href.replace('#', '?'));
 		var query_string = url.search;
@@ -54,6 +56,7 @@ var premiumApi = {
 					orderBy: '',
 					context: context_id,
 				};
+				delay(5000);
 				if (premiumApi.access_token === '') return;
 				fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' + context_id, {
 					method: 'POST',
@@ -75,6 +78,7 @@ var premiumApi = {
 							where: '',
 							orderBy: '',
 						};
+						delay(5000);
 						if (premiumApi.access_token === '') return;
 						fetch(
 							'https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' +
@@ -100,6 +104,7 @@ var premiumApi = {
 									where: '',
 									orderBy: '',
 								};
+								delay(5000);
 								if (premiumApi.access_token === '') return;
 								fetch(
 									'https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' +
@@ -125,6 +130,7 @@ var premiumApi = {
 			});
 	},
 	getusage: async function () {
+		await delay(5000);
 		console.log('Waited 5s');
 		if (premiumApi.access_token === '') return;
 		fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id, {
@@ -242,7 +248,7 @@ var premiumApi = {
 					});
 				}
 				document.getElementById('inactive').innerHTML = temp;
-
+				delay(5000);
 				if (premiumApi.access_token === '') return;
 				fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id1, {
 					headers: {
@@ -279,7 +285,7 @@ var premiumApi = {
 							});
 						}
 						document.getElementById('getData403').innerHTML = temp5;
-
+						delay(5000);
 						if (premiumApi.access_token === '') return;
 						fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id2, {
 							headers: {
@@ -378,7 +384,7 @@ var premiumApi = {
 		console.log('logIn');
 		let clientId = a;
 		let scopes = 'data:read+data:write+bucket:read';
-		let redirectUri = encodeURI('https://autodesk-forge.github.io/forge-premium-report/');
+		let redirectUri = encodeURI('https://Autodesk-Forge.github.io/forge-premium-report/');
 		window.open(
 			`https://developer.api.autodesk.com/authentication/v1/authorize` +
 				`?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}`,
@@ -392,7 +398,7 @@ var premiumApi = {
 	logOut: function () {
 		console.log('logOut');
 		if (premiumApi.access_token === '') return;
-		let url = 'https://autodesk-forge.github.io/forge-premium-report/';
+		let url = 'https://Autodesk-Forge.github.io/forge-premium-report/';
 		location.href = url;
 	},
 	client_id_value: function () {
