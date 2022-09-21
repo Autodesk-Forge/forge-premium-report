@@ -16,16 +16,9 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////
 window.addEventListener('load', setup);
-  
     async function setup() {
       const ctx = document.getElementById('myChart1').getContext('2d');
       const dataTemps = await getData();
-
-
- 
-
-
-  
       const myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -38,7 +31,6 @@ window.addEventListener('load', setup);
               borderColor: dataTemps.border_color,
               backgroundColor: dataTemps.background_color,
               borderWidth: 3
-           
             }
           ]
         },
@@ -63,8 +55,6 @@ window.addEventListener('load', setup);
         const cols = row.split(',');
         team_alias.push(cols[0]);
         seat_quantity.push(cols[9]);
-      
-        
       });
         for(x=0;x<99;x++)
      {
@@ -73,8 +63,6 @@ window.addEventListener('load', setup);
         const b= Math.floor(Math.random()*255);
         background_color.push('rgba('+r+','+g+','+b+',0.2)');
         border_color.push('rgba('+r+','+g+','+b+',1)');
-
      }
-
       return { team_alias, seat_quantity,background_color,border_color };   
     }

@@ -92,7 +92,6 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                     //                 obj.PROJECT = obj.PROJECT || '-';
                     //                 obj.DEPARTMENT = obj.DEPARTMENT || '-';
                     //                 obj.CC = obj.CC || '-';
-                                         
                     //                 user_metadata1.push(obj);
                     //             }
                     //             for (var j in metadata) {
@@ -104,18 +103,11 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                     //                         PROJECT : metadata[j].PROJECT,
                     //                         DEPARTMENT : metadata[j].DEPARTMENT,
                     //                         CC:metadata[j].CC
-                                         
-                                            
-                                        
-                                        
-                                        
-                                        
                     //                     });
                     //                 }
                     //             }
                     //             document.getElementById("headings4").innerHTML = "MetaData Mapping";
                     //            BindTable(user_metadata1, '#user_metadata1');
-
                     //              var createXLSLFormatObj = [];
                     //      var xlsHeader = ["email", "name","autodesk_id","GEO","COUNTRY","CITY","PORJECT","DEPARTMENT","COSTCENTER"];
                     //      createXLSLFormatObj.push(xlsHeader);
@@ -128,16 +120,12 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                     //         });
                     //          createXLSLFormatObj.push(innerRowData);
                     //      });
-                      
                     //      var filename = "metadata.xlsx";
-                 
                     //      var ws_name = "metadata";
                     //      if (typeof console !== 'undefined') console.log(new Date());
                     //      var wb = XLSX.utils.book_new(),
                     //          ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
-                        
                     //      XLSX.utils.book_append_sheet(wb, ws, ws_name);
-                      
                     //      if (typeof console !== 'undefined') console.log(new Date());
                     //      XLSX.writeFile(wb, filename);
                     //      if (typeof console !== 'undefined') console.log(new Date());
@@ -197,7 +185,6 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                             });
                     }
                     //Download & View license Purchased
-                 
                     if (exceljson.length > 0 && cnt == 0) {
                         document.getElementById("headings1").innerHTML = "Licenses Purchased";
                         BindTable(exceljson, '#exceltable');
@@ -207,10 +194,7 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                             var obj = { team_alias: exceljson[i].team_alias,offering_name: exceljson[i].offering_name, seat_quantity: exceljson[i].seat_quantity };
                             user_p.push(obj);
                         }
-                        
                         BindTable(user_p, '#license_purchased');
-
-                        
                         var createXLSLFormatObj = [];
                         var xlsHeader = ["team_alias", "offering_name","seat_quantity"];
                         createXLSLFormatObj.push(xlsHeader);
@@ -236,10 +220,6 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                         if (typeof console !== 'undefined') console.log(new Date());
                         XLSX.writeFile(wb, filename);
                         if (typeof console !== 'undefined') console.log(new Date());
-
-
-
-
                     }
                     //Download & View license  Assigned                
                     if (exceljson.length > 0 && cnt == 1) {
@@ -252,10 +232,8 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                         let count1 = JSON.stringify(count, null, 2)
                         user_l.push(count);
                         console.log(count1);
-                    
                         BindTable(user_l, '#license_assigned');
                         var createXLSLFormatObj = [];
-                     
                         var xlsHeader = ["Flex","Premium", "ArchitectureEngineering&ConstructionCollection","Assemble Office",	"CFD - Ultimate",	"Fusion 360 Manage - Enterprise",	"Product Design & Manufacturing Collection",
                         	"Vault Professional",	"InfoDrainage - Ultimate",	"InfoWater Pro",	"InfoWorks ICM - Ultimate",
                             	"Fusion 360"	,	"Media & Entertainment Collection",	"ShotGrid - Subscription"
@@ -283,9 +261,7 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
                         if (typeof console !== 'undefined') console.log(new Date());
                         XLSX.writeFile(wb, filename);
                         if (typeof console !== 'undefined') console.log(new Date());
-                     
                     }
-
 //Identify users on the same project(s) using different product version.
 if (exceljson.length > 0 && cnt == 2) {
     metadata1 = [];
@@ -298,7 +274,6 @@ if (exceljson.length > 0 && cnt == 2) {
             for (var i in exceljson) {
                 var obj = { email: exceljson[i].email, product_name: exceljson[i].product_name, team_alias: exceljson[i].team_alias,
                   version: exceljson[i].version};
-                
                 for (var j in metadata1) {
                     if (exceljson[i].email == metadata1[j].email) {
                         obj.PROJECT = metadata1[j].PROJECT;
@@ -312,14 +287,10 @@ if (exceljson.length > 0 && cnt == 2) {
                 if (typeof obj_m_version[metadata1[j].email] == 'undefined') {
                     product_version.push({ email: metadata1[j].email, product_name: metadata1[j].product_name, team_alias: metadata1[j].team_alias,
                       version: metadata1[j].version,
-                         
                         PROJECT : metadata1[j].PROJECT
-
                     });
                 }
             }
-
-
             document.getElementById("headings5").innerHTML = "Users on the same project(s) using different product versions";
             BindTable(product_version, '#product_version');
              var createXLSLFormatObj = [];
@@ -350,12 +321,6 @@ if (exceljson.length > 0 && cnt == 2) {
         });
 }           
 //
-
-
-
-
-
-
                     cnt++;
                 });
                 $('#exceltable').show();
@@ -375,7 +340,6 @@ if (exceljson.length > 0 && cnt == 2) {
         alert("Please upload a valid Excel file!");
     }
 }
-
 function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/
     var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/
     for (var i = 0; i < jsondata.length; i++) {

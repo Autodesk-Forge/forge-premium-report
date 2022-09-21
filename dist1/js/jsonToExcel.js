@@ -19,10 +19,10 @@ document.getElementsByTagName("head")[0].innerHTML += '<script type="text/javasc
 var createXLSLFormatObj = [];
 var xlsHeader = ["Email", "License Purchased"];
 createXLSLFormatObj.push(xlsHeader);
-$.each(active, function(index, value) {
+$.each(active, function (index, value) {
     var innerRowData = [];
-    $("tbody").append('<tr><td>' +email.value  + '</td><td>'+ seat_quantity.value + '</td></tr>');
-    $.each(value, function(ind, val) {
+    $("tbody").append('<tr><td>' + email.value + '</td><td>' + seat_quantity.value + '</td></tr>');
+    $.each(value, function (ind, val) {
         innerRowData.push(val);
     });
     createXLSLFormatObj.push(innerRowData);
@@ -40,4 +40,3 @@ XLSX.utils.book_append_sheet(wb, ws, ws_name);
 if (typeof console !== 'undefined') console.log(new Date());
 XLSX.writeFile(wb, filename);
 if (typeof console !== 'undefined') console.log(new Date());
-

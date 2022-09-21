@@ -40,4 +40,3 @@ XLSX.utils.book_append_sheet(wb, ws, ws_name);
 if (typeof console !== 'undefined') console.log(new Date());
 XLSX.writeFile(wb, filename);
 if (typeof console !== 'undefined') console.log(new Date());
-

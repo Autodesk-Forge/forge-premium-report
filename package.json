@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepalics0044/forge-premium-remote-private"
+    "url": "git+https://github.com/Autodesk-Forge/forge-premium-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/deepalics0044/forge-premium-remote-private/issues"
+    "url": "https://github.com/Autodesk-Forge/forge-premium-report/issues"
   },
-  "homepage": "https://github.com/deepalics0044/forge-premium-remote-private#readme",
+  "homepage": "https://github.com/Autodesk-Forge/forge-premium-report#readme",
   "dependencies": {
     "gh-pages": "^4.0.0"
   }
