@@ -25,7 +25,9 @@ let specific_id2="";
 var premiumApi = {
     "access_token": "",
     "LogIn": ["Log In", "Logged In"],
-    "onLoad":  function () {
+    "onLoad":  async function () {
+        await delay(5000);
+        console.log("Waited 5s");
         console.log("onLoad")
         var url = new URL(window.location.href.replace('#', '?'))
         var query_string = url.search
@@ -98,6 +100,7 @@ var premiumApi = {
                 'where': '',
                 'orderBy': ''
             };
+            
             if (premiumApi.access_token === "")
             return
         fetch('https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&' + context_id, {
@@ -120,6 +123,8 @@ var premiumApi = {
 })
     },
     "getusage":   async function () {
+        await delay(5000);
+        console.log("Waited 5s");
         if (premiumApi.access_token === "")
             return
          fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id, {

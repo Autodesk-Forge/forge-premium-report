@@ -120,6 +120,8 @@ var premiumApi = {
 })
     },
     "getusage":   async function () {
+        
+        console.log("Waited 5s");
         if (premiumApi.access_token === "")
             return
          fetch('https://developer.api.autodesk.com/insights/v1/usage-queries/' + specific_id, {
