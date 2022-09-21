@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Autodesk-Forge/forge-premium-report#readme",
   "dependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
   }
 }
