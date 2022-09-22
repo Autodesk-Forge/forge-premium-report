@@ -19,10 +19,8 @@
     <head>
          <meta charset="utf-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
          <meta name="viewport" content="width=device-width, initial-scale=1">
          <script src="js/methods.js"></script>
-        
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
@@ -37,24 +35,16 @@
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      
         <!--<script src="js/jsonToExcel.js"></script>--> 
          <!--    <script src="js/pie.js"></script>-->
          <script src="js/jsonToTable.js"></script>
-         
          <script src="js/line.js"></script>
-     
          <script src="js/polarArea.js"></script>
-        
          <link rel="stylesheet" href="css/style.css" />
          <script type="text/javascript" src="metadata.json"></script>
-         
          <title>PremiumAPITest</title>
-         
     </head>
          <body onload="premiumApi.onLoad()">
-     
-        
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <ul class="nav navbar-nav left">
@@ -65,13 +55,7 @@
         </li>
       </ul>
    <h3>Premium Reporting Sample 
-   
-     
-
-
       <button id="LogIn" onclick="premiumApi.client_id_value(),premiumApi.logIn()" class="buttonstyling" style='margin-right:16px'>LOG IN</button>
-   
-
 <button id="LogOut" onclick="premiumApi.logOut()" class="buttonstyling" style='margin-right:16px'>LOG OUT</button>  
 </h3>
     </div>
@@ -81,20 +65,13 @@
       <div class="col-sm-4 fill">
         <div class="panel panel-default fill">
           <div class="panel-heading" data-toggle="tooltip">
-        
           </div>
-        
         </div>
       </div>
       <div class="col-sm-8 fill">
-     
       </div>
     </div>
   </div>
-  
-
- 
-
   <div class="container">
   <br><br><br><br>               
     <ul class="breadcrumb">
@@ -108,8 +85,6 @@
        </li>
       <li > <input type="button" name="answer3" value="PowerBI" onclick="showDiv()" class="buttonstyle" class="buttonstyle" class="buttonstyle btn btn-info"  data-toggle="collapse" data-target="#powerbi"/>
       </li>    -->
-      
-      
     </ul>
   </div>
   <p id = "para"></p>
@@ -117,23 +92,16 @@
        <div class="row"dump
 <div class="column">
     <div class="center">
-    
-      
       <div id="charts" class="collapse" > 
         <p class="parastyle"> Store the .csv format of all.xlsx in client code folder to view the charts</p>
       <canvas id="myChart" width="500" height="250" style="float:left" ></canvas>
       <canvas id="myChart2" width="500" height="250" style="float:left" ></canvas>
-       
       </div>
-
       <!-- <div id="powerbi" class="collapse">
-  
-        
         <p align="center"> <iframe 
              title="Usage Data Report Template" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=cfa9a338-ece2-4d52-8d15-257fc9141a33&autoAuth=true&ctid=d31e02c6-54b5-4d12-862e-f9a59580ae30" frameborder="0" allowFullScreen="true">        </iframe>
           </p> 
        </div> -->
-          
         </div> 
         <div id="usecases" class="collapse">
           <p class="parastyle">&nbsp;&nbsp;&nbsp;&nbsp;If you want to view the downloaded xlsx. Upload your file over here & then click on Export To Table</p>     
@@ -145,51 +113,39 @@
             </div>
             <div class="column" hidden="hidden">
               <a id="d"></a>
-            
             <textarea id="Info" rows="100" cols="50"></textarea> 
             <a id="downloadAnchorElem" style="display:none"></a>   
             <canvas id="canvas"></canvas> 
             <canvas id="myChart" width="400" height="400"></canvas>
         </div>
-       
             <div id="demo21" class="collapse">
-              
               <!-- <h2 class="parastyle" id="headings4"> </h2>
               <div class = "container">
                 <div class="outer-wrapper">
                   <div class="table-wrapper">
-                
                 <table id="user_metadata1">  
                 </table> 
                 </div></div>
               </div>
-              
               <br><br>
                -->
-              
               <h2 class="parastyle" id="headings1"> </h2>
               <div class = "container">
                 <div class="outer-wrapper">
                   <div class="table-wrapper">
-              
                 <table id="license_purchased">  
                 </table> 
               </div></div></div>
               <br><br>
               <br><br>
-              
-           
               <h2 class="parastyle" id="headings2"></h2> 
               <div class = "container">
                 <div class="outer-wrapper">
                   <div class="table-wrapper">
-              
                 <table id="license_assigned">  
                 </table> 
               </div></div></div>
               <br><br>
-              
-      
               <h2 class="parastyle" id="headings">  </h2>
               <div class = "container">
                 <div class="outer-wrapper">
@@ -198,9 +154,6 @@
                 </table> 
               </div></div></div>
               <br><br>
-              
-              
-               
                   <h2 class="parastyle" id="headings5">  </h2>
                   <div class = "container">
                     <div class="outer-wrapper">
@@ -209,66 +162,48 @@
                     </table> 
                   </div></div></div>
                   <br><br>
-              
                 </div>
-       
         <div  id="demo" class = "collapse"  >
         <script>
              function ExportToExcel(type, fn, dl) {
-                    
                     var elt = active
-                    
                     var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
                     return dl ?
-                   
                       XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
                       XLSX.writeFile(wb, fn || ('Active.' + (type || 'xlsx')));
-                      
                  }
         </script>
           <div class="outer-wrapper">
             <button onclick="ExportToExcel('xlsx')" style='margin-right:16px'>Export table to excel</button>
-
             <div class="table-wrapper">
             <table  id="exceltable1"  >
                 <thead id="activeh"  >
-                
                 </thead>
                 <tbody id="active">
                 </tbody>
-  
             </table>
           </div>
         </div>
         </div>
-        
         <br><br>
         <div  id="demo1" class = "collapse"  >
-         
           <script>
                function ExportToExcel1(type, fn, dl) {
-                      
                       var elt = inactive
-                      
                       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
                       return dl ?
-                     
                         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
                         XLSX.writeFile(wb, fn || ('Inactive.' + (type || 'xlsx')));
-                        
                    }
           </script>
           <div class="outer-wrapper">
             <button onclick="ExportToExcel1('xlsx')">Export table to excel</button>
             <div class="table-wrapper">
-           
             <table  id="exceltable1"  >
                 <thead id="inactiveh" >
-                
                 </thead>
                 <tbody id="inactive">
                 </tbody>
-  
             </table>
           </div></div>
         </div>
@@ -276,29 +211,21 @@
         <div  id="demo4" class = "collapse" >
           <script>
             function ExportToExcel4(type, fn, dl) {
-                   
                    var elt = get209
-                   
                    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
                    return dl ?
-                  
                      XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
                      XLSX.writeFile(wb, fn || ('infrequent_1product.' + (type || 'xlsx')));
-                     
                 }
        </script>
           <div class="outer-wrapper">
             <button onclick="ExportToExcel4('xlsx')">Export table to excel</button>
-
             <div class="table-wrapper">
           <table  id="exceltable1"  >
               <thead id="get208" >
-              
               </thead>
               <tbody id="get209">
-  
               </tbody>
-  
           </table>
           </div></div>
       </div>
@@ -306,24 +233,18 @@
         <div  id="demo2" class = "collapse">
           <script>
             function ExportToExcel3(type, fn, dl) {
-                   
                    var elt = getData403
-                   
                    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
                    return dl ?
-                  
                      XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
                      XLSX.writeFile(wb, fn || ('standalone.' + (type || 'xlsx')));
-                     
                 }
        </script>
           <div class="outer-wrapper">
             <button onclick="ExportToExcel3('xlsx')">Export table to excel</button>
-
             <div class="table-wrapper">
           <table  id="exceltable1"  >
               <thead id="getData402" >
-              
               </thead>
               <tbody id="getData403">
               </tbody>
