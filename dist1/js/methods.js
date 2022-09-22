@@ -349,9 +349,9 @@ var premiumApi = {
           });
       });
   },
-  viewallexport: async function () {
+  viewallexport: function () {
     if (premiumApi.access_token === "") return;
-    await fetch("https://developer.api.autodesk.com/insights/v1/exports", {
+    fetch("https://developer.api.autodesk.com/insights/v1/exports", {
       headers: {
         Authorization: `Bearer ${premiumApi.access_token}`,
       },
