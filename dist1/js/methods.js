@@ -27,9 +27,6 @@ var premiumApi = {
   access_token: "",
   LogIn: ["Log In", "Logged In"],
   onLoad: async function () {
-    await delay(5000);
-    console.log("Waited 5s");
-    console.log("onLoad");
     var url = new URL(window.location.href.replace("#", "?"));
     var query_string = url.search;
     var search_params = new URLSearchParams(query_string);
