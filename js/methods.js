@@ -19,6 +19,7 @@ document.getElementsByTagName("head")[0].innerHTML +=
   '<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>';
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 var a;
+var getusagebtn;
 let context_id = "";
 let specific_id = "";
 let specific_id1 = "";
@@ -348,11 +349,15 @@ var premiumApi = {
                       }
                       document.getElementById("get209").innerHTML = temp5;
                     });
-                }, 5000);
+                }, 500);
               });
-          }, 5000);
+          }, 500);
         });
-    }, 5000);
+      document.getElementById("GetUsageInformation").disabled = true;
+    }, 500);
+    setTimeout(() => {
+      document.getElementById("GetUsageInformation").disabled = false;
+    }, 10000);
   },
   viewallexport: async function () {
     if (premiumApi.access_token === "") return;
@@ -410,7 +415,7 @@ var premiumApi = {
     let clientId = a;
     let scopes = "data:read+data:write+bucket:read";
     let redirectUri = encodeURI(
-      "https://Autodesk-Forge.github.io/forge-premium-report/"
+      "https://autodesk-forge.github.io/forge-premium-report/"
     );
     window.open(
       `https://developer.api.autodesk.com/authentication/v1/authorize` +
@@ -425,7 +430,7 @@ var premiumApi = {
   logOut: function () {
     console.log("logOut");
     if (premiumApi.access_token === "") return;
-    let url = "https://Autodesk-Forge.github.io/forge-premium-report/";
+    let url = "https://autodesk-forge.github.io/forge-premium-report/";
     location.href = url;
   },
   client_id_value: function () {
