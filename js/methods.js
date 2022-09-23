@@ -37,50 +37,31 @@ var premiumApi = {
       ? premiumApi.LogIn[1]
       : premiumApi.LogIn[0];
     console.log(premiumApi.access_token);
-    if (premiumApi.access_token === "") return;
-    fetch("https://developer.api.autodesk.com/insights/v1/contexts", {
-      headers: {
-        Authorization: `Bearer ${premiumApi.access_token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        let json1 = JSON.parse(data);
-        context_id = (json1[0] || "").contextId;
-        console.log("context id is" + context_id);
-        let user_specific = {
-          fields: ["fullName", "productName"],
-          metrics: ["earliestUsageDate", "latestUsageDate", "totalUniqueDays"],
-          where: "",
-          orderBy: "",
-          context: context_id,
-        };
-        if (premiumApi.access_token === "") return;
-        fetch(
-          "https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&" +
-            context_id,
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${premiumApi.access_token}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user_specific),
-          }
-        )
-          .then((res) => res.text())
-          .then((data) => {
-            let json2 = JSON.parse(data);
-            console.log(json2);
-            specific_id = json2.id;
-            console.log("specific id is" + specific_id);
-            let user_specific1 = {
-              fields: ["fullName", "productName", "childProductName"],
-              metrics: [],
-              where: "",
-              orderBy: "",
-            };
+    setTimeout(() => {
+      if (premiumApi.access_token === "") return;
+      fetch("https://developer.api.autodesk.com/insights/v1/contexts", {
+        headers: {
+          Authorization: `Bearer ${premiumApi.access_token}`,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.text())
+        .then((data) => {
+          let json1 = JSON.parse(data);
+          context_id = (json1[0] || "").contextId;
+          console.log("context id is" + context_id);
+          let user_specific = {
+            fields: ["fullName", "productName"],
+            metrics: [
+              "earliestUsageDate",
+              "latestUsageDate",
+              "totalUniqueDays",
+            ],
+            where: "",
+            orderBy: "",
+            context: context_id,
+          };
+          setTimeout(() => {
             if (premiumApi.access_token === "") return;
             fetch(
               "https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&" +
@@ -91,44 +72,75 @@ var premiumApi = {
                   Authorization: `Bearer ${premiumApi.access_token}`,
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify(user_specific1),
+                body: JSON.stringify(user_specific),
               }
             )
               .then((res) => res.text())
               .then((data) => {
                 let json2 = JSON.parse(data);
                 console.log(json2);
-                specific_id1 = json2.id;
-                console.log("specific id is" + specific_id1);
-                let user_specific2 = {
-                  fields: ["fullName", "productName"],
-                  metrics: ["totalUniqueDays", "uniqueProducts"],
+                specific_id = json2.id;
+                console.log("specific id is" + specific_id);
+                let user_specific1 = {
+                  fields: ["fullName", "productName", "childProductName"],
+                  metrics: [],
                   where: "",
                   orderBy: "",
                 };
-                if (premiumApi.access_token === "") return;
-                fetch(
-                  "https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&" +
-                    context_id,
-                  {
-                    method: "POST",
-                    headers: {
-                      Authorization: `Bearer ${premiumApi.access_token}`,
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(user_specific2),
-                  }
-                )
-                  .then((res) => res.text())
-                  .then((data) => {
-                    let json2 = JSON.parse(data);
-                    console.log(json2);
-                    specific_id2 = json2.id;
-                    console.log("specific id is" + specific_id2);
-                  });
-              });
+                setTimeout(() => {
+                  if (premiumApi.access_token === "") return;
+                  fetch(
+                    "https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&" +
+                      context_id,
+                    {
+                      method: "POST",
+                      headers: {
+                        Authorization: `Bearer ${premiumApi.access_token}`,
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(user_specific1),
+                    }
+                  )
+                    .then((res) => res.text())
+                    .then((data) => {
+                      let json2 = JSON.parse(data);
+                      console.log(json2);
+                      specific_id1 = json2.id;
+                      console.log("specific id is" + specific_id1);
+                      let user_specific2 = {
+                        fields: ["fullName", "productName"],
+                        metrics: ["totalUniqueDays", "uniqueProducts"],
+                        where: "",
+                        orderBy: "",
+                      };
+                      setTimeout(() => {
+                        if (premiumApi.access_token === "") return;
+                        fetch(
+                          "https://developer.api.autodesk.com/insights/v1/usage-queries?offset=0&limit=100&" +
+                            context_id,
+                          {
+                            method: "POST",
+                            headers: {
+                              Authorization: `Bearer ${premiumApi.access_token}`,
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(user_specific2),
+                          }
+                        )
+                          .then((res) => res.text())
+                          .then((data) => {
+                            let json2 = JSON.parse(data);
+                            console.log(json2);
+                            specific_id2 = json2.id;
+                            console.log("specific id is" + specific_id2);
+                          }, 500);
+                      });
+                    }, 500);
+                });
+              }, 500);
           });
-      });
+        }, 500);
+    });
   },
   getusage: async function () {
     setTimeout(() => {
@@ -348,13 +360,14 @@ var premiumApi = {
                         });
                       }
                       document.getElementById("get209").innerHTML = temp5;
-                    });
-                }, 500);
-              });
-          }, 500);
-        });
+                    }, 500);
+                });
+              }, 500);
+          });
+        }, 500);
       document.getElementById("GetUsageInformation").disabled = true;
-    }, 500);
+    });
+
     setTimeout(() => {
       document.getElementById("GetUsageInformation").disabled = false;
     }, 10000);
@@ -414,7 +427,7 @@ var premiumApi = {
     console.log("logIn");
     let clientId = a;
     let scopes = "data:read+data:write+bucket:read";
-    let redirectUri = encodeURI("http://localhost:5500/");
+    let redirectUri = encodeURI("http://localhost:5500");
     window.open(
       `https://developer.api.autodesk.com/authentication/v1/authorize` +
         `?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}`,
@@ -428,7 +441,7 @@ var premiumApi = {
   logOut: function () {
     console.log("logOut");
     if (premiumApi.access_token === "") return;
-    let url = "http://localhost:5500/";
+    let url = "http://localhost:5500";
     location.href = url;
   },
   client_id_value: function () {
