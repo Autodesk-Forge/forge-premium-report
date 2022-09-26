@@ -162,6 +162,9 @@ var premiumApi = {
       )
         .then((res) => res.text())
         .then((data) => {
+          document.getElementById("GetUsageInformation").disabled = true;
+          document.getElementById("GetUsageInformation").textContent =
+            "Loading";
           let json2 = JSON.parse(data);
           const result = (json2.columns || []).length;
           if (result > 0) {
@@ -364,14 +367,14 @@ var premiumApi = {
                         });
                       }
                       document.getElementById("get209").innerHTML = temp5;
-                      document.getElementById(
-                        "GetUsageInformation"
-                      ).disabled = true;
                       setTimeout(() => {
                         document.getElementById(
                           "GetUsageInformation"
                         ).disabled = false;
                       }, 5000);
+                      document.getElementById(
+                        "GetUsageInformation"
+                      ).textContent = "Custom Usage Query API Data";
                     });
                 }, 1000);
               });
