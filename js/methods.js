@@ -38,6 +38,7 @@ var premiumApi = {
       : premiumApi.LogIn[0];
     console.log(premiumApi.access_token);
     document.getElementById("GetUsageInformation").disabled = true;
+    document.getElementById("GetUsageInformation").textContent = "Loading";
     setTimeout(() => {
       if (premiumApi.access_token === "") return;
       fetch("https://developer.api.autodesk.com/insights/v1/contexts", {
@@ -137,6 +138,9 @@ var premiumApi = {
                             document.getElementById(
                               "GetUsageInformation"
                             ).disabled = false;
+                            document.getElementById(
+                              "GetUsageInformation"
+                            ).textContent = "Custom Usage Query API Data";
                           });
                       }, 500);
                     });
