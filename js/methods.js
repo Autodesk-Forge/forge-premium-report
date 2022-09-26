@@ -37,6 +37,7 @@ var premiumApi = {
       ? premiumApi.LogIn[1]
       : premiumApi.LogIn[0];
     console.log(premiumApi.access_token);
+    document.getElementById("GetUsageInformation").disabled = true;
     setTimeout(() => {
       if (premiumApi.access_token === "") return;
       fetch("https://developer.api.autodesk.com/insights/v1/contexts", {
@@ -133,14 +134,17 @@ var premiumApi = {
                             console.log(json2);
                             specific_id2 = json2.id;
                             console.log("specific id is" + specific_id2);
-                          }, 500);
-                      });
-                    }, 500);
-                });
-              }, 500);
-          });
-        }, 500);
-    });
+                            document.getElementById(
+                              "GetUsageInformation"
+                            ).disabled = false;
+                          });
+                      }, 500);
+                    });
+                }, 500);
+              });
+          }, 500);
+        });
+    }, 500);
   },
   getusage: async function () {
     setTimeout(() => {
@@ -360,17 +364,20 @@ var premiumApi = {
                         });
                       }
                       document.getElementById("get209").innerHTML = temp5;
-                    }, 500);
-                });
-              }, 500);
-          });
-        }, 500);
-      document.getElementById("GetUsageInformation").disabled = true;
-    });
-
-    setTimeout(() => {
-      document.getElementById("GetUsageInformation").disabled = false;
-    }, 10000);
+                      document.getElementById(
+                        "GetUsageInformation"
+                      ).disabled = true;
+                      setTimeout(() => {
+                        document.getElementById(
+                          "GetUsageInformation"
+                        ).disabled = false;
+                      }, 5000);
+                    });
+                }, 1000);
+              });
+          }, 1000);
+        });
+    }, 1000);
   },
   viewallexport: async function () {
     if (premiumApi.access_token === "") return;
@@ -428,7 +435,7 @@ var premiumApi = {
     let clientId = a;
     let scopes = "data:read+data:write+bucket:read";
     let redirectUri = encodeURI(
-      "https://autodesk-forge.github.io/forge-premium-report/"
+      "https://Autodesk-Forge.github.io/forge-premium-report/"
     );
     window.open(
       `https://developer.api.autodesk.com/authentication/v1/authorize` +
@@ -443,7 +450,7 @@ var premiumApi = {
   logOut: function () {
     console.log("logOut");
     if (premiumApi.access_token === "") return;
-    let url = "https://autodesk-forge.github.io/forge-premium-report/";
+    let url = "https://Autodesk-Forge.github.io/forge-premium-report/";
     location.href = url;
   },
   client_id_value: function () {
