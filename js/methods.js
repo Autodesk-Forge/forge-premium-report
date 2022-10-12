@@ -24,6 +24,7 @@ let context_id = "";
 let specific_id = "";
 let specific_id1 = "";
 let specific_id2 = "";
+let specific_export = "";
 var premiumApi = {
   access_token: "",
   LogIn: ["Log In", "Logged In"],
@@ -135,20 +136,49 @@ var premiumApi = {
                             console.log(json2);
                             specific_id2 = json2.id;
                             console.log("specific id is" + specific_id2);
-                            document.getElementById(
-                              "GetUsageInformation"
-                            ).disabled = false;
-                            document.getElementById(
-                              "GetUsageInformation"
-                            ).textContent = "Custom Usage Query API Data";
+
+                            setTimeout(() => {
+                              let user_export = {
+                                outputFormat: "EXCEL",
+                                reports: ["SUBSCRIPTIONS"],
+                              };
+                              if (premiumApi.access_token === "") return;
+                              fetch(
+                                "https://developer.api.autodesk.com/insights/v1/exports",
+                                {
+                                  method: "POST",
+                                  headers: {
+                                    Authorization: `Bearer ${premiumApi.access_token}`,
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify(user_export),
+                                }
+                              )
+                                .then((res) => res.text())
+                                .then((data) => {
+                                  let json2 = JSON.parse(data);
+                                  console.log(json2);
+                                  specific_export = json2.id;
+                                  console.log(
+                                    "specific export is" + specific_export
+                                  );
+
+                                  document.getElementById(
+                                    "GetUsageInformation"
+                                  ).disabled = false;
+                                  document.getElementById(
+                                    "GetUsageInformation"
+                                  ).textContent = "Custom Usage Query API Data";
+                                });
+                            }, 1000);
                           });
-                      }, 500);
+                      }, 1000);
                     });
-                }, 500);
+                }, 1000);
               });
-          }, 500);
+          }, 1000);
         });
-    }, 500);
+    }, 1000);
   },
   getusage: async function () {
     setTimeout(() => {
@@ -387,26 +417,29 @@ var premiumApi = {
     }, 1000);
   },
   viewallexport: async function () {
+    document.getElementById("viewAllExport").disabled = true;
+    document.getElementById("viewAllExport").textContent = "Loading";
     if (premiumApi.access_token === "") return;
-    await fetch("https://developer.api.autodesk.com/insights/v1/exports", {
-      headers: {
-        Authorization: `Bearer ${premiumApi.access_token}`,
-      },
-      outputFormat: "EXCEL",
-      reports: ["USAGE", "USERS", "SUBSCRIPTIONS"],
-    })
+    fetch(
+      "https://developer.api.autodesk.com/insights/v1/exports/" +
+        specific_export,
+      {
+        headers: {
+          Authorization: `Bearer ${premiumApi.access_token}`,
+        },
+        outputFormat: "EXCEL",
+        reports: ["USAGE", "USERS", "SUBSCRIPTIONS"],
+      }
+    )
       .then((res) => res.text())
       .then((data) => {
         let json = JSON.parse(data);
-        document.getElementById("d").innerHTML =
-          json.exports[0].downloads[0].downloadURL;
+        console.log(json);
+
+        document.getElementById("d").innerHTML = json.downloads[0].downloadURL;
         //download this file in order to save it in share point location which can be used in PowerBI integration
-        console.log(json.exports[0].downloads[0].downloadURL);
         var dlAnchorElem = document.getElementById("downloadAnchorElem");
-        dlAnchorElem.setAttribute(
-          "href",
-          json.exports[0].downloads[0].downloadURL
-        );
+        dlAnchorElem.setAttribute("href", json.downloads[0].downloadURL);
         dlAnchorElem.setAttribute("download", "scene.xlsx");
         dlAnchorElem.click();
         if (json.exports.length > 0) {
@@ -436,6 +469,11 @@ var premiumApi = {
           document.getElementById("data8").innerHTML = temp;
         }
       });
+    setTimeout(() => {
+      document.getElementById("viewAllExport").disabled = false;
+    }, 5000);
+    document.getElementById("viewAllExport").textContent =
+      "Download Export Usage Query API Data";
   },
   logIn: function () {
     console.log("logIn");
